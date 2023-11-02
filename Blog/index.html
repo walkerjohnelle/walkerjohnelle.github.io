@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Johnelle's Blog</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -102,10 +103,10 @@
     <section id="about">
         <h1>About Me</h1>
         <p>
-            Welcome to my blog! I'm Johnelle, and I've had some experience with HTML in the past. I've used resources like FreeCodeCamp to create mock coffee shop menus and explore web development. This journey has been a nice refresher and reminds me of why I enjoy working with HTML.
+            Welcome to my blog! I'm Johnelle, and this is my blog. I initially created it as part of the pre course work for the Skill Distillery&trade; bootcamp that I'll be attending. This was an exercise in utilizing HTML with which I've had some experience in the past. I've used resources like FreeCodeCamp&trade; to create mock coffee shop menus and explore web development. This journey has been a nice refresher and reminds me of why I enjoy working with HTML.
         </p>
         <p>
-            In my free time, I'm passionate about sports, movies, music, and travel. Let's explore these interests together in my blog entries.
+            About me, I'm an Air Force Vet and currently undergoing a career change from intelligence analyst to software developer. In my free time, I enjoy traveling, appreciate great food, sports, movies, and music. Let's explore these interests together in my blog entries.
         </p>
     </section>
 
@@ -113,24 +114,45 @@
         <h1>Blog Entries</h1>
 
         <h2>Favorite Movies from 2023:</h2>
+        <p>
+            Below is a list of my favorite movies from 2023, so far. Here, we have everything from an animated superhero film, to a couple of historical dramas, along with a surreal horror comedy, and a unbelievable documentary. I've linked the trailers just in case you're interested. 
+            </p> 
         <ul>
-            <li><a href="https://youtu.be/cqGjhVJWtEg?si=5hL9AW-w7f4-0E72">Spider-Man (Across the Spider-Verse)</a></li>
-            <li><a href="https://youtu.be/EP34Yoxs3FQ?si=t7QcvT38L2BNY3KZ">Killers of the Flower Moon</a></li>
-            <li><a href="https://youtu.be/PuiWDn976Ek?si=5_z5dHw738aDS5yK">Beau is Afraid</a></li>
-            <li><a href="https://youtu.be/bK6ldnjE3Y0?si=VFGLPH3lDWbQXm_y">Oppenheimer</a></li>
-            <li><a href="https://youtu.be/aevincEID5Y?si=Xu8IMJVPGZEhFa3h">BS High</a></li>
+            <li><a href="https://youtu.be/cqGjhVJWtEg?si=5hL9AW-w7f4-0E72"target="_blank">Spider-Man (Across the Spider-Verse)</a><p>
+            So I enjoyed the first one, however, the second installment of the Spider-Verse series might of just ruined superhero movies for me for awhile. A lot of movies now are delving into the whole multiverse thing, but to me, this one did it best. Merging fan service with fresh storytelling, and incredible visuals, it sets the bar extremely high for telling old stories with a fresh take.</p></li>
+            <li><a href="https://youtu.be/EP34Yoxs3FQ?si=t7QcvT38L2BNY3KZ"target="_blank">Killers of the Flower Moon</a><p>
+            The trailer really threw me off. Initially, I saw the trailer and thought, sure that looks interesting enough, but when i heard it was 3.5 hours long, there was definitely a pause for concern. I barely got through Martin Scorsese's "The Irishman," and I was worried this would be another drawn out movie that would struggle to hold my interest. What I got was a very complex telling of a story that has repetedly been swept under the rug and that really needed to be told. I walked out feeling a wave of emotions and it's definitely a film that has stayed with me days after leaving the cinema.</p></li>
+            <li><a href="https://youtu.be/PuiWDn976Ek?si=5_z5dHw738aDS5yK"target="_blank">Beau is Afraid</a><p>
+            I love horror movies, especially ones written and directed by Ari Aster. So i was really excited to see this one. Another film with a 3 hour runtime on this list, the first watch was a lot to take in. I enjoyed it, and it definitely stuck with me, but it didn't make this list until i watched it again. There were so many nuances that I missed the first time or just didn't fully appreciate. It's definitely not for everyone, but for the people that will enjoy it, I think they'll love it!</p></li>
+            <li><a href="https://youtu.be/bK6ldnjE3Y0?si=VFGLPH3lDWbQXm_y"target="_blank">Oppenheimer</a><p>
+            Yet another 3 hour movie, I swear this isn't intentional! This movie needs no explination. The marketing campaign behind Barbenheimer ensured that there would be plenty of eyes on this one. It's a story that I've always been interested in, and I feel like it was told & acted extremely well. Despite the runtime, I felt like it used it's time very efficiently and I didn't even notice.</p></li>
+            <li><a href="https://youtu.be/aevincEID5Y?si=Xu8IMJVPGZEhFa3h"target="_blank">BS High</a><p>
+            I stumbled on this documentary one night as I struggled to find something to watch. I watched the trailer and figured I'd give it a shot. I was not ready for the ride I went on. I couldn't believe the lengths people would go to make a buck and the justifications people will make to validate their horrible actions.</p></li>
         </ul>
 
-        <h2>Sports</h2>
-        <p>
-            I recently attended a thrilling basketball game. Check out some pictures from the game:
-            <img src="basketball.jpg" alt="Basketball Game">
-        </p>
+       <h2>Travel</h2>
+<p>
+    During my time in the Air Force, I was offered the opportunity to travel a ton for both work and personal. Not to sound too cliche, but the chance to see the world and experience different cultures has had a huge impact on my life and shaped the person that I am today.
+</p>
+<div id="map" style="width: 100%; height: 400px;"></div>
 
-        <h2>Movie Reviews</h2>
-        <p>
-            I watched "Spider-Man: Across the Spider-Verse" and here's my review: [Link to your review]
-        </p>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+    <script>
+        var map = L.map("map").setView([0, 0], 3);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+        }).addTo(map);
+
+        L.marker([41.8902, 12.4922])
+            .addTo(map)
+            .bindPopup('<a href="https://www.instagram.com/p/BXWA8oJgFhP9YHI8bTCv8RHCMoeHoJ7H43UqLI0/?img_index=1" target="_blank">Rome, Italy</a>');
+        L.marker([16.4637, 107.5909])
+            .addTo(map)
+            .bindPopup('<a href="https://www.instagram.com/p/BjPh5xFAUVCH37HX5BpQ4bC4Rgn-VsUdV7gg7U0/" target="_blank">Hue, Vietnam</a>');
+    </script>
 
         <!-- Add more blog entries here -->
     </section>
